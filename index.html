@@ -3,340 +3,574 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kontrakan Tersedia | Hunian Nyaman</title>
+    <title>Kontrakan Premium | Hunian Nyaman & Modern</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
-            padding: 20px;
-            background-color: #f0f8ff;
-            background-image: linear-gradient(135deg, #f0f8ff 0%, #e6f2ff 100%);
+            padding: 0;
+            box-sizing: border-box;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-        h1 {
+        
+        .hero-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.9), rgba(118, 75, 162, 0.9));
+            padding: 60px 20px;
             text-align: center;
-            color: #1e3a8a;
-            margin-bottom: 30px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-            font-size: 2.5rem;
             position: relative;
-            padding-bottom: 15px;
+            overflow: hidden;
         }
-        h1:after {
+        
+        .hero-section::before {
             content: '';
             position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
             bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="white" opacity="0.1"/><circle cx="80" cy="80" r="1" fill="white" opacity="0.1"/><circle cx="40" cy="60" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: slideInDown 1s ease-out;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 40px;
+            animation: slideInUp 1s ease-out 0.3s both;
+        }
+        
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: white;
+            margin-top: -40px;
+            border-radius: 30px 30px 0 0;
+            position: relative;
+            z-index: 3;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .features-section {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
+            width: 80px;
             height: 4px;
-            background: linear-gradient(90deg, #3b82f6, #1e40af);
+            background: linear-gradient(90deg, #667eea, #764ba2);
             border-radius: 2px;
         }
-        .kontrakan-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .kontrakan-item {
-            border: none;
-            background-color: #fff;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-        }
-        .kontrakan-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-        .kontrakan-item:nth-child(1) { border-top: 5px solid #3b82f6; }
-        .kontrakan-item:nth-child(2) { border-top: 5px solid #10b981; }
-        .kontrakan-item:nth-child(3) { border-top: 5px solid #f59e0b; }
-        .kontrakan-item:nth-child(4) { border-top: 5px solid #ef4444; }
-        .kontrakan-item:nth-child(5) { border-top: 5px solid #8b5cf6; }
-        .kontrakan-item:nth-child(6) { border-top: 5px solid #ec4899; }
-        .kontrakan-item:nth-child(7) { border-top: 5px solid #06b6d4; }
-        .kontrakan-item:nth-child(8) { border-top: 5px solid #84cc16; }
         
-        .kontrakan-content {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 600px;
+            margin: 30px auto 0;
         }
-        .image-container {
-            border: none;
-            margin: 15px;
-            height: 200px;
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            background-color: #f3f4f6;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: inset 0 0 5px rgba(0,0,0,0.1);
-        }
-        .image-container img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        .kontrakan-item:hover .image-container img {
-            transform: scale(1.05);
-        }
-        .details-container {
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
-            padding: 0 15px 15px;
-        }
-        .unit-info {
-            border: none;
-            padding: 12px;
-            margin-bottom: 15px;
-            text-align: center;
-            font-weight: bold;
-            border-radius: 8px;
+            font-size: 24px;
             color: white;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-            background-image: linear-gradient(to right, #1e40af, #3b82f6);
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
         }
-        .kontrakan-item:nth-child(1) .unit-info { background-image: linear-gradient(to right, #1e40af, #3b82f6); }
-        .kontrakan-item:nth-child(2) .unit-info { background-image: linear-gradient(to right, #065f46, #10b981); }
-        .kontrakan-item:nth-child(3) .unit-info { background-image: linear-gradient(to right, #b45309, #f59e0b); }
-        .kontrakan-item:nth-child(4) .unit-info { background-image: linear-gradient(to right, #b91c1c, #ef4444); }
-        .kontrakan-item:nth-child(5) .unit-info { background-image: linear-gradient(to right, #5b21b6, #8b5cf6); }
-        .kontrakan-item:nth-child(6) .unit-info { background-image: linear-gradient(to right, #9d174d, #ec4899); }
-        .kontrakan-item:nth-child(7) .unit-info { background-image: linear-gradient(to right, #0e7490, #06b6d4); }
-        .kontrakan-item:nth-child(8) .unit-info { background-image: linear-gradient(to right, #4d7c0f, #84cc16); }
         
-        .price-size {
-            border: none;
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 15px;
-            background-color: #f8fafc;
-            border-radius: 8px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.05);
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+        }
+        
+        .feature-description {
+            color: #718096;
             font-size: 0.95rem;
-            line-height: 1.6;
         }
-        .price {
-            font-weight: bold;
-            font-size: 1.2rem;
-            color: #1e40af;
-            margin-bottom: 5px;
-        }
-        .kontrakan-item:nth-child(1) .price { color: #1e40af; }
-        .kontrakan-item:nth-child(2) .price { color: #065f46; }
-        .kontrakan-item:nth-child(3) .price { color: #b45309; }
-        .kontrakan-item:nth-child(4) .price { color: #b91c1c; }
-        .kontrakan-item:nth-child(5) .price { color: #5b21b6; }
-        .kontrakan-item:nth-child(6) .price { color: #9d174d; }
-        .kontrakan-item:nth-child(7) .price { color: #0e7490; }
-        .kontrakan-item:nth-child(8) .price { color: #4d7c0f; }
         
-        .size {
-            color: #6b7280;
-        }
-        .button-container {
-            display: flex;
-            justify-content: center;
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
             margin-top: 40px;
         }
-        .contact-button {
-            background-image: linear-gradient(to right, #1e40af, #3b82f6);
+        
+        .property-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s ease;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+        
+        .property-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .property-image {
+            height: 250px;
+            background: linear-gradient(45deg, #f7fafc, #edf2f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .property-card:hover .property-image img {
+            transform: scale(1.1);
+        }
+        
+        .property-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .property-card:hover .property-image::before {
+            opacity: 0.1;
+        }
+        
+        .property-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
             color: white;
-            border: none;
-            padding: 14px 28px;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .property-content {
+            padding: 25px;
+        }
+        
+        .property-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+        
+        .property-size {
+            color: #718096;
+            font-size: 1rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .property-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .feature-tag {
+            background: #f7fafc;
+            color: #4a5568;
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .cta-section {
             text-align: center;
+            margin-top: 80px;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 30px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .cta-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .cta-description {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: #667eea;
+            padding: 18px 36px;
+            font-size: 1.1rem;
+            font-weight: 700;
             text-decoration: none;
-            font-size: 18px;
-            cursor: pointer;
             border-radius: 50px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
-            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
         }
+        
         .contact-button:hover {
-            background-image: linear-gradient(to right, #1e3a8a, #2563eb);
-            box-shadow: 0 6px 15px rgba(59, 130, 246, 0.4);
-            transform: translateY(-2px);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+            background: #f8f9ff;
         }
+        
+        .whatsapp-icon {
+            width: 24px;
+            height: 24px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            animation: float-random 15s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 10%;
+            animation-delay: 5s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+        
+        @keyframes float-random {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-30px) rotate(120deg); }
+            66% { transform: translateY(15px) rotate(240deg); }
+        }
+        
         @media (max-width: 768px) {
-            .kontrakan-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            .hero-title {
+                font-size: 2.5rem;
             }
-        }
-        @media (max-width: 480px) {
-            .kontrakan-grid {
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .properties-grid {
                 grid-template-columns: 1fr;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 20px;
+                margin-top: -20px;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Kontrakan Tersedia</h1>
-        
-        <div class="kontrakan-grid">
-            <!-- Kontrakan 1 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="rumah.jpg" alt="Kontrakan 1">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit A1
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 1.500.000 per bulan</div>
-                            <div class="size">Ukuran 4x6m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 2 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="b.jpg" alt="Kontrakan 2">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit A2
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 1.750.000 per bulan</div>
-                            <div class="size">Ukuran 5x6m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 3 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="c.jpg" alt="Kontrakan 3">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit B1
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 1.350.000 per bulan</div>
-                            <div class="size">Ukuran 4x5m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 4 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/200" alt="Kontrakan 4">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit B2
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 1.450.000 per bulan</div>
-                            <div class="size">Ukuran 4x5.5m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 5 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/200" alt="Kontrakan 5">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit C1
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 2.000.000 per bulan</div>
-                            <div class="size">Ukuran 5x7m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 6 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/200" alt="Kontrakan 6">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit C2
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 2.200.000 per bulan</div>
-                            <div class="size">Ukuran 5x8m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 7 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/200" alt="Kontrakan 7">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit D1
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 1.800.000 per bulan</div>
-                            <div class="size">Ukuran 5x6.5m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Kontrakan 8 -->
-            <div class="kontrakan-item">
-                <div class="kontrakan-content">
-                    <div class="image-container">
-                        <img src="/api/placeholder/300/200" alt="Kontrakan 8">
-                    </div>
-                    <div class="details-container">
-                        <div class="unit-info">
-                            Unit D2
-                        </div>
-                        <div class="price-size">
-                            <div class="price">Rp. 1.900.000 per bulan</div>
-                            <div class="size">Ukuran 5x7m</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="button-container">
-<a href="https://wa.me/6281296578146?text=halo%20saya%20ingin%20bertanya%20ketersediaan%20kontrakan" target="_blank">
-  <button class="contact-button">Hubungi Kami</button>
-</a>
-  </a>
-</div>
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
 
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Kontrakan Premium</h1>
+            <p class="hero-subtitle">Hunian Modern & Nyaman dengan Fasilitas Lengkap</p>
+        </div>
+    </section>
+
+    <div class="container">
+        <section class="features-section">
+            <h2 class="section-title">Fasilitas Tersedia</h2>
+            <p class="section-subtitle">Kami menyediakan hunian berkualitas dengan fasilitas lengkap dan lokasi strategis untuk kenyamanan hidup Anda</p>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🚿</div>
+                    <h3 class="feature-title">Kamar Mandi</h3>
+                    <p class="feature-description">Kamar mandi bersih dengan perlengkapan lengkap untuk kenyamanan sehari-hari</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💧</div>
+                    <h3 class="feature-title">Air Bersih 24 Jam</h3>
+                    <p class="feature-description">Pasokan air bersih yang lancar sepanjang waktu tanpa gangguan</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3 class="feature-title">Area Telah Dipagari</h3>
+                    <p class="feature-description">Keamanan terjamin dengan area yang telah dipagari untuk privasi dan kenyamanan</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">Listrik PLN</h3>
+                    <p class="feature-description">Listrik PLN resmi dengan daya yang memadai untuk kebutuhan sehari-hari</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="properties-section">
+            <h2 class="section-title">Unit Tersedia</h2>
+            <p class="section-subtitle">Pilih unit kontrakan yang sesuai dengan kebutuhan dan budget Anda</p>
+            
+            <div class="properties-grid">
+                <!-- Unit A1 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="rumah.jpg" alt="Unit A1" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(45deg,#667eea,#764ba2);color:white;font-size:1.2rem;font-weight:600;\'>🏠 Unit A1</div>'">
+                        <div class="property-badge">TERSEDIA</div>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-title">
+                            <span>🏠</span> Unit A1
+                        </h3>
+                        <div class="property-price">Rp 1.500.000/bulan</div>
+                        <div class="property-size">
+                            <span>📐</span> 4 x 6 meter (24m²)
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">Kamar Mandi</span>
+                            <span class="feature-tag">Air 24 Jam</span>
+                            <span class="feature-tag">Listrik PLN</span>
+                            <span class="feature-tag">Area Dipagari</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit A2 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="b.jpg" alt="Unit A2" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(45deg,#10b981,#059669);color:white;font-size:1.2rem;font-weight:600;\'>🏠 Unit A2</div>'">
+                        <div class="property-badge">TERSEDIA</div>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-title">
+                            <span>🏠</span> Unit A2
+                        </h3>
+                        <div class="property-price">Rp 1.750.000/bulan</div>
+                        <div class="property-size">
+                            <span>📐</span> 5 x 6 meter (30m²)
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">Kamar Mandi</span>
+                            <span class="feature-tag">Air 24 Jam</span>
+                            <span class="feature-tag">Listrik PLN</span>
+                            <span class="feature-tag">Area Dipagari</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Unit B1 -->
+                <div class="property-card">
+                    <div class="property-image">
+                        <img src="c.jpg" alt="Unit B1" onerror="this.style.display='none'; this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;background:linear-gradient(45deg,#f59e0b,#d97706);color:white;font-size:1.2rem;font-weight:600;\'>🏠 Unit B1</div>'">
+                        <div class="property-badge">TERSEDIA</div>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-title">
+                            <span>🏠</span> Unit B1
+                        </h3>
+                        <div class="property-price">Rp 1.350.000/bulan</div>
+                        <div class="property-size">
+                            <span>📐</span> 4 x 5 meter (20m²)
+                        </div>
+                        <div class="property-features">
+                            <span class="feature-tag">Kamar Mandi</span>
+                            <span class="feature-tag">Air 24 Jam</span>
+                            <span class="feature-tag">Listrik PLN</span>
+                            <span class="feature-tag">Area Dipagari</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Siap Pindah?</h2>
+                <p class="cta-description">Hubungi kami sekarang untuk survei lokasi dan diskusi lebih lanjut tentang unit yang Anda minati</p>
+                <a href="https://wa.me/6281296578146?text=Halo%2C%20saya%20tertarik%20dengan%20kontrakan%20yang%20tersedia.%20Bisa%20tolong%20berikan%20informasi%20lebih%20detail%3F" class="contact-button" target="_blank">
+                    <div class="whatsapp-icon">📱</div>
+                    Hubungi Kami di WhatsApp
+                </a>
+            </div>
+        </section>
     </div>
 </body>
 </html>
